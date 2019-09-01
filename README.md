@@ -1,5 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Install modules
+In order to be able to install modules in react, you must first initialize npm in
+the project directory (npm init), then install the modules using npm install
+(npm install PACKAGENAME --save). Then you import them into the framework.
+
 ## Available Scripts
 
 In the project directory, you can run:
