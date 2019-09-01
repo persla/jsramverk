@@ -6,8 +6,9 @@ class Me extends React.Component {
     return (
       <div>
         <h1>Me</h1>
-        <p>Jag heter lars Persson och studerar webbprogrammaering på blekinge
-        tekniska högskola</p>
+        <p>Jag heter Lars Persson och läser webbprogrammering på BTH.
+        Jag studerar på distans från Umeå och det ska bli intressant
+        att lära sig mer om jsramverk.</p>
       </div>
     )
   }

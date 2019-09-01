@@ -9,15 +9,26 @@ const topics = [
   {
     name: 'Vecka 1',
     id: '1',
-    description: <h4>Redovisningstexten för kmom01</h4>,
-    text: <div><p>här kommer massa text från</p>
-    <p>här kommer massa text från</p></div> ,
+    description: <h4>Redovisningstext för kmom01</h4>,
+    text: <div>
+    <h4>Install modules</h4>
+    <p>In order to be able to install modules in react, you must first initialize npm in
+    the project directory (npm init), then install the modules using npm install
+    (npm install PACKAGENAME --save). Then you have to import them into the framework.</p>
+
+    <h4>Available Scripts</h4>
+    <p>In the project directory, you can run: `npm start`</p>
+    <p>That runs the app in the development mode.</p>
+    <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to view it in the browser.</p>
+    <p>The page will reload if you make edits.
+    You will also see any lint errors in the console.</p>
+    </div> ,
     url:  <a href="https://github.com/persla/jsramverk">Repo on github</a> ,
   },
   {
     name: 'Vecka 2',
     id: '2',
-    description: <h4>Redovisningstexten för kmom02</h4>,
+    description: <h4>Redovisningstext för kmom02</h4>,
     text: <div><p>här kommer massa text från</p>
     <p>här kommer massa text från</p></div>,
     url:  <a href="https://github.com/persla/jsramverk">Repo on github</a> ,
@@ -25,7 +36,7 @@ const topics = [
   {
     name: 'Vecka 3',
     id: '3',
-    description: <h4>Redovisningstexten för kmom03</h4>,
+    description: <h4>Redovisningstext för kmom03</h4>,
     text: <div><p>här kommer massa text från</p>
     <p>här kommer massa text från</p></div>,
     url:  <a href="https://github.com/persla/jsramverk">Repo on github</a> ,
