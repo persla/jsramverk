@@ -14,7 +14,9 @@ const topics = [
     <h4>Install modules</h4>
     <p>In order to be able to install modules in react, you must first initialize npm in
     the project directory (npm init), then install the modules using npm install
-    (npm install PACKAGENAME --save). Then you have to import them into the framework.</p>
+    (npm install  --save PACKAGENAME), you have to npm install  --save react-dom.
+    Then you have to import them into the framework. You will be able access it in your files
+    with the code "import ReactDOM from 'react-dom'"</p>
 
     <h4>Available Scripts</h4>
     <p>In the project directory, you can run: `npm start`</p>

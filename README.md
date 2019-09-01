@@ -3,7 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Install modules
 In order to be able to install modules in react, you must first initialize npm in
 the project directory (npm init), then install the modules using npm install
-(npm install PACKAGENAME --save). Then you have to import them into the framework.
+(npm install PACKAGENAME --save) , you have to npm install  --save react-dom.
+Then you have to import them into the framework. You will be able access it in your files
+with the code "import ReactDOM from 'react-dom'". Then you have to import them into the framework.
 
 ## Available Scripts
 
