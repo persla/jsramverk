@@ -62,7 +62,7 @@ function Topic ({ match }) {
 function Topics ({ match }) {
   return (
     <div>
-      <h1>Rapporter</h1>
+      <h2>Rapporter</h2>
       <ul>
         {topics.map(({ name, id }) => (
           <li key={id}>
@@ -82,16 +82,12 @@ class Reports extends Component {
   render() {
     return (
       <Router>
-        <div style={{width: 1000, margin: '0 auto'}}>
           <ul>
-
-            <li><Link style={{color: 'black', 'font-size': '2em', 'text-decoration': 'none' }}
+            <li><Link style={{color: 'white' }}
             to='/reports/week'>Vecka</Link></li>
           </ul>
           <hr/>
-
           <Route path='/reports/week' component={Topics} />
-        </div>
       </Router>
     )
   }
