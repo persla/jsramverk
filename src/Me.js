@@ -4,7 +4,7 @@ import React from 'react'
 class Me extends React.Component {
   render() {
     return (
-      <div>
+      <div class = "articel">
         <h1>Me</h1>
         <p>Jag heter Lars Persson och läser webbprogrammering på BTH.
         Jag studerar på distans från Umeå och det ska bli intressant

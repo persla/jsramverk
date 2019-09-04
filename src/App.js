@@ -22,6 +22,7 @@ class App extends Component {
           </nav>
           <Route exact path="/" component={Me} />
           <Route path="/reports" component={Reports} />
+          <footer>Lars Persson 2019</footer>
         </div>
       </Router>
 

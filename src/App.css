@@ -6,10 +6,16 @@ html {
 .App {
     width: 62em;
     margin: 0 auto;
-    padding: 2em 6em 8em;
-    background-color: #0074d9;
-    border-top: 4px solid #0be6d7;
+    padding: 2em 6em 2em;
+    background-color: #100E17;
+    border-top: 4px solid darkgray;
     color: white;
+    border-radius: 5px;
+}
+
+nav {
+    margin-top: 1em;
+    margin-bottom: 2em;
 }
 
 h1 {
@@ -20,6 +26,24 @@ h1 {
 h2 {
     font-size: 1.5em;
     font-weight: 100;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: 100;
+}
+.articel {
+    background-color: white;
+    color: #100E17;
+    padding: 2em 6em 4em;
+    border-radius: 5px;
+}
+
+.articel a {
+    text-decoration: none;
+    color: darkblue;
+    font-size: 1em;
 }
 
 p {
@@ -29,6 +53,8 @@ p {
 
 ul {
     list-style-type: none;
+    margin-bottom: 1em;
+    margin-top: 1em;
 }
 
 li {
@@ -38,8 +64,11 @@ li {
 
 li a {
     text-decoration: none;
-    color: white;
+    color: lightgray;
     font-size: 1.4em;
+    border: solid 2px lightgray;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 a {
@@ -49,13 +78,15 @@ a {
 }
 
 li a:hover {
-    text-decoration: underline;
+    border: solid 2px red;
+    color: red;
 }
 
-h2 {
-  text-transform: uppercase;
-}
+footer {
+    text-align: center;
+    padding: 2em;
+    color: lightgray;
+    font-size: 1.4em;
+    margin-top:calc(10% + 60px);
 
-.question {
-  margin-bottom: 2em;
 }
