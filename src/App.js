@@ -17,7 +17,7 @@ class App extends Component {
           <nav>
             <ul>
               <li><Link to="/">Me</Link></li>
-              <li><Link to="/reports">Reports</Link></li>
+              <li><Link to="/reports">Rapporter</Link></li>
             </ul>
           </nav>
           <Route exact path="/" component={Me} />
