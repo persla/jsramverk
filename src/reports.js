@@ -60,7 +60,7 @@ function Topic ({ match }) {
 function Topics ({ match }) {
   return (
     <div>
-      <h2>Veckoapporter</h2>
+      <h2>Veckorapporter</h2>
       <ul>
         {topics.map(({ name, id }) => (
           <li key={id}>
