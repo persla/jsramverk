@@ -186,8 +186,15 @@ input::placeholder {
   display: relative;
 }
 
+.valid {
+  color:darkgreen;
+  font-size: 0.5em;
+  display: relative;
+}
+
 .fullName,
 .email,
+.date,
 .password {
   display: flex;
   flex-direction: column;
@@ -199,6 +206,7 @@ input::placeholder {
 }
 
 .email,
+.date,
 .password {
   width: 100%;
 }
