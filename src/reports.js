@@ -31,8 +31,33 @@ const topics = [
     name: 'Vecka 2',
     id: '2',
     description: <h3>Redovisningstext för kmom02</h3>,
-    text: <div><p>här kommer massa text från</p>
-    <p>här kommer massa text från</p></div>,
+    text: <div><p>Inspirationen jag har haft för att skapa registreringsformuläret
+    är en enkel och tydlig design likt gmails inloggnings registrering. Därefter har
+    eftersträvat att följa de riktlinjer som presenteras på “A Checklist for
+    Registration and Login Forms on Mobile”.</p>
+
+    <p>I inledningen förklarar nyttan av att registrera sig. Därefter eftersträvade
+    jag minimal information från användaren enligt kraven, emellertid fick jag göra
+    ett avsteg från rekommendationen att inte uppmana användarna att uppge födelsedatum
+    eftersom det fanns med i kravspecifikationen för kursmomentet. Därefter förklarade
+    jag kraven för input fälten namn och password för att tydliggöra för användaren
+    vad som krävs så att användaren inte ska behöva gissa och använda trial and
+    error. För password fältet möjliggjorde jag även visibilitet genom en togglad
+    checkbox, eftersom kravet på lösenordets konstruktion var medelstarkt så ansåg
+    jag att den funktionalitet krävdes. Inga av input fälten återupprepas eftersom
+    det krävs mycket från användaren på mobiler att återupprepa procedurer, vilket
+    gör att sannolikheten att registreringen inte kommer att bli av ökar. </p>
+    <p>Jag har även inkluderat ett godkännande från användaren för hur applikationen
+    kommer att hantera användardata, som krävs för att submitknappen ska bli
+    enabled. Valideringen av de olika formulärfälten är konstruerad i huvudsak
+    utifrån test av regex som har konstruerats och sedermera testas mot användarens
+    input. Valideringsinformation för varje registreringsfält presenteras direkt
+    till användaren under registreringsprocessen och när det validerat markeras
+    det med en checkmark. Är väl medveten om att min date-picker inte är särskilt
+    avancerad, men personligen uppskattar jag tydlighet och enkelheten som liknar
+    typen som används av G-mail för registrering. 
+    </p>
+    </div>,
     url:  <a href="https://github.com/persla/jsramverk">Repo on github</a> ,
   },
   {
