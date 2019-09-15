@@ -223,7 +223,7 @@ const listYears = years.map((year, index) =>
 
               <div className='datum'>
               <input list="year" placeholder="åååå" id="yearChoice" maxLength="4" name="yearChoice"
-              required onChange={this.handleChange} noValidate/>
+              inputMode="numeric" pattern="[0-9]{4}" required onChange={this.handleChange} noValidate/>
               <datalist id="year">
               {listYears}
               </datalist>
@@ -234,7 +234,7 @@ const listYears = years.map((year, index) =>
 
               <div className='datum'>
               <input list="month" placeholder="mm" id="monthChoice" maxLength="2" name="monthChoice"
-              required onChange={this.handleChange} noValidate />
+              inputMode="numeric" pattern="[0-9]{2}" required onChange={this.handleChange} noValidate />
               <datalist id="month">
               {listMonts}
               </datalist>
@@ -244,8 +244,8 @@ const listYears = years.map((year, index) =>
               </div>
 
               <div className='datum'>
-              <input type="text" pattern='[0-9]{2}' list="day"  placeholder="dd" id="dayChoice" maxLength="2" name="dayChoice"
-              required onChange={this.handleChange} noValidate />
+              <input type="text"  list="day"  placeholder="dd" id="dayChoice" maxLength="2" name="dayChoice"
+              inputMode="numeric" pattern="[0-9]{2}" required onChange={this.handleChange} noValidate />
               <datalist id="day">
               {listDays}
               </datalist>
