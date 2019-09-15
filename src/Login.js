@@ -13,7 +13,7 @@ const validEmailRegex = RegExp(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
 // const validDateRegex = RegExp(/(19|20)\d\d[-](0[1-9]|1[012])[-](0[1-9]|[12][0-9]|3[01])/g);
 const validPasswordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})");
 const validYearRegex = RegExp(/(19|20)\d\d/g);
-const validMonthRegex = RegExp(/(jan|feb|mar|apr|maj|jun|jul|aug|sep|okt|nov|dec)/i);
+const validMonthRegex = RegExp(/(01|02|03|04|05|06|07|08|09|10|11|12)/i);
 const validDayRegex = RegExp(/([1-9]|[12][0-9]|3[01])/g);
 
 const validateForm = (errors) => {
@@ -70,38 +70,38 @@ handleChange = (event) => {
     case 'fullName':
       errors.fullName =
         value.length < 5
-          ? 'För- och efternamn måste vara på minst 5 tecken'
+          ? 'Minst 5 tecken.'
           : '';
       break;
     case 'email':
       errors.email =
         validEmailRegex.test(value)
           ? ''
-          : 'Denna e-post är inte giltig än!';
+          : 'E-post inte giltig än!';
       break;
         case 'yearChoice':
           errors.yearChoice =
             validYearRegex.test(value)
               ? ''
-              : 'Välj årtal';
+              : 'Välj år.';
           break;
           case 'monthChoice':
             errors.monthChoice =
               validMonthRegex.test(value)
                 ? ''
-                : 'Välj månad';
+                : 'Välj månad.';
             break
             case 'dayChoice':
               errors.dayChoice =
                 validDayRegex.test(value)
                   ? ''
-                  : 'Välj dag';
+                  : 'Välj dag.';
               break;
     case 'password':
       errors.password =
         validPasswordRegex.test(value)
           ? ''
-          : 'Lösenordet måste vara på minst 8 tecken samt innehålla minst en siffra, en stor bokstav, en liten bokstav och ett av fäljande specialtecken !@#$%^&*';
+          : 'Lösenordet inte giltigt än!';
       break;
     default:
       break;
@@ -114,11 +114,9 @@ handleChange = (event) => {
 handleSubmit = (event) => {
   event.preventDefault();
   if(validateForm(this.state.errors) && this.state.fullName !== null) {
-      this.setState({formValidation: 'Valid Form!'});
-    console.info('Valid Form')
+      this.setState({formValidation: 'Giltigt registreringsformulär!'});
   }else{
-    console.error('Invalid Form')
-     this.setState({formValidation: 'Inalid Form!'});
+     this.setState({formValidation: 'Ogiltigt registreringsformulär!'});
   }
 
 }
@@ -143,7 +141,7 @@ render() {
   ];
 
   const listMonts = months.map((month) =>
-  <option value={month.month} key={month.month}>{month.idMonth}</option>
+  <option value={month.idMonth} key={month.month}>{month.month}</option>
 );
 
 const range = (start, end, step) => {
@@ -165,29 +163,30 @@ const listYears = years.map((year, index) =>
   return (
     <div className='wrapper'>
       <div className='form-wrapper'>
-        <h2>Skapa användare</h2>
-        <span className='info'>Som användare får du tillgång till att skriva rapporter på denna applikation.
-        </span>
+        <h2>Registrering</h2>
+        <span className='intro'>Som registrerad användare får du tillgång till att skriva rapporter på denna applikation.
+        </span><br/>
         <form onSubmit={this.handleSubmit} noValidate>
 
           <div className='fullName'>
-            <label htmlFor="fullName">För- och efternamn</label>
-            <input type='text' name='fullName' required onChange={this.handleChange} noValidate />
-            {errors.fullName.length > 0 &&
+            <label htmlFor="fullName">För- och efternamn {errors.fullName.length > 0 &&
               <span className='error'>{errors.fullName}</span>}
             {this.state.fullName !== null && this.state.fullName.length > 4 ?
-                <span className='valid'>Giltigt namn!</span> :
-            ''}
+                <span className='valid'>&#10004;</span> :
+            ''}</label>
+            <span className='info'>Minst fem tecken</span>
+            <input type='text' name='fullName' required onChange={this.handleChange} noValidate />
+
           </div>
 
           <div className='email'>
-            <label htmlFor="email">E-post</label>
-            <input type='email' name='email' required onChange={this.handleChange} noValidate />
-            {errors.email.length > 0 &&
+            <label htmlFor="email">E-post {errors.email.length > 0 &&
               <span className='error'>{errors.email}</span>}
               {this.state.email !== null && errors.email.length === 0 ?
-                  <span className='valid'>Giltig E-post!</span> :
-              ''}
+                  <span className='valid'>&#10004;</span> :
+              ''}</label>
+            <input type='email' name='email' required onChange={this.handleChange} noValidate />
+
               </div>
 
           <div className='password'>
@@ -197,21 +196,29 @@ const listYears = years.map((year, index) =>
             type="checkbox"
             checked={this.state.isGoing}
             onChange={this.handleInputChange} />
-            <span className='info'>Visa!</span> </label>
+            <span className='info'>Visa/Dölj! </span>{errors.password.length > 0 &&
+              <span className='error'>{errors.password}</span>}
+              {this.state.password !== null && errors.password.length === 0 ?
+                  <span className='valid'>&#10004;</span> :
+              ''} </label><span className='info'>
+            Lösenordet måste vara på minst 8 tecken samt innehålla minst en siffra,
+            en stor bokstav, en liten bokstav och ett av följande specialtecken !@#$%^&*</span>
             {this.state.isGoing === false ?
                 <input type='password' name='password' required onChange={this.handleChange} noValidate />
                 :
                 <input type='text' name='password' required onChange={this.handleChange} />
             }
-            {errors.password.length > 0 &&
-              <span className='error'>{errors.password}</span>}
-              {this.state.password !== null && errors.password.length === 0 ?
-                  <span className='valid'>Giltigt lösenord!</span> :
-              ''}
+
               </div>
 
               <div className='birth'>
-              <label htmlFor="year">Födelsedatum:</label>
+              <label htmlFor="year">Födelsedatum
+                 {this.state.yearChoice !== null && errors.yearChoice.length === 0 &&
+                     this.state.monthChoice !== null && errors.monthChoice.length === 0 &&
+                     this.state.dayChoice !== null && errors.dayChoice.length === 0
+                     ?
+                     <span className='valid'> &#10004;</span> :
+                 ''}</label>
               </div>
 
               <div className='datum'>
@@ -222,26 +229,22 @@ const listYears = years.map((year, index) =>
               </datalist>
               {errors.yearChoice.length > 0 &&
                 <span className='error'>{errors.yearChoice}</span>}
-                {this.state.yearChoice !== null && errors.yearChoice.length === 0 ?
-                    <span className='valid'>Giltig Årtal!</span> :
-                ''}
+
               </div>
 
               <div className='datum'>
-              <input list="month" placeholder="mm" id="monthChoice" maxLength="3" name="monthChoice"
+              <input list="month" placeholder="mm" id="monthChoice" maxLength="2" name="monthChoice"
               required onChange={this.handleChange} noValidate />
               <datalist id="month">
               {listMonts}
               </datalist>
               {errors.monthChoice.length > 0 &&
                 <span className='error'>{errors.monthChoice}</span>}
-                {this.state.monthChoice !== null && errors.monthChoice.length === 0 ?
-                    <span className='valid'>Giltig månad!</span> :
-                ''}
+
               </div>
 
               <div className='datum'>
-              <input list="day" placeholder="dd" id="dayChoice" maxLength="2" name="dayChoice"
+              <input type="text" pattern='[0-9]{2}' list="day"  placeholder="dd" id="dayChoice" maxLength="2" name="dayChoice"
               required onChange={this.handleChange} noValidate />
               <datalist id="day">
               {listDays}
@@ -249,14 +252,11 @@ const listYears = years.map((year, index) =>
 
               {errors.dayChoice.length > 0 &&
                 <span className='error'>{errors.dayChoice}</span>}
-                {this.state.dayChoice !== null && errors.dayChoice.length === 0 ?
-                    <span className='valid'>Giltig dag!</span> :
-                ''}
-                </div>
-                {console.log(this.state.formValidation)}
-              <div>
 
-                <span className='info'>Jag är införstådd hur applikationen skyddar mina uppgifter</span>
+                </div>
+
+              <div>
+                <span className='info'>Jag godkänner hur applikationen skyddar mina uppgifter</span>
                 <input
                 name="isOk"
                 type="checkbox"
@@ -266,10 +266,10 @@ const listYears = years.map((year, index) =>
 
                 {this.state.isOk === true ?
                     <div className='submit'>
-                       <button>Create</button>
+                       <button>Registrera</button>
                      </div> :
                      <div className='submit'>
-                        <button disabled>Create</button>
+                        <button disabled>Registrera</button>
                       </div>
                 }
                   </div>

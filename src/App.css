@@ -126,7 +126,7 @@ button:disabled {
 
 
 .wrapper {
-  height: 102vh;
+  height: 125vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -202,13 +202,20 @@ input::placeholder {
 
 .valid {
   color:darkgreen;
-  font-size: 0.5em;
+  font-size: 0.9em;
   display: relative;
 }
 
 .info {
   color:black;
   font-size: 0.5em;
+  padding-bottom: 0.2em;
+  display: relative;
+}
+
+.intro {
+  color:black;
+  font-size: 0.8em;
   display: relative;
 }
 
