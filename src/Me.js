@@ -1,16 +1,23 @@
-// import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import React from 'react'
-class Me extends React.Component {
-  render() {
-    return (
-      <div class = "articel">
-        <h1>Me</h1>
-        <p>Jag heter Lars Persson och läser webbprogrammering på BTH.
-        Jag studerar på distans från Umeå och det ska bli intressant
-        att lära sig mer om jsramverk.</p>
-      </div>
-    )
-  }
-}
-export default Me
+const Me = () => {
+  const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    fetch('http://localhost:1337/me')
+      .then(res => res.json())
+      .then(res => setMessage(res.description));
+  });
+
+  return (
+    <main>
+
+      <h1>Me</h1>
+
+      <p>{message}</p>
+
+    </main>
+  );
+};
+
+export default Me;
