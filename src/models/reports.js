@@ -12,8 +12,8 @@ var reports = {
     passwordNew: "",
     token: "",
     errorMessage: "",
-    
-    
+
+
 
     clear: function() {
         console.log( reports.allReports1);
@@ -56,7 +56,23 @@ var reports = {
         console.log(res.data);
         // console.log(res.data.data.user);
     },
-    
+
+    revReport: async function(name, description, texten, id) {
+        // console.log(this.state.fullName.value);
+        console.log(name);
+        console.log(description);
+        var payload = {
+            name: name,
+            description: description,
+            texten: texten,
+            id: id
+        };
+
+        let res = await axios.put('http://localhost:1337/reports', payload);
+        console.log(res.data);
+        // console.log(res.data.data.user);
+    },
+
     getReport: async function() {
 
 //         axios.get('http://localhost:1337/reports')
@@ -74,10 +90,10 @@ var reports = {
     //     })
     //     .catch(function (error) {
     //     //  resultElement.innerHTML = generateErrorHTMLOutput(error);
-    //     });   
+    //     });
 
         // console.log(this.state.fullName.value);
-        
+
         // var payload = {
         //     name: name,
         //     description: description,
@@ -96,7 +112,7 @@ var reports = {
         reports.currentReports = res.data.data;
         return reports.currentReports;
 
-      
+
     },
 
     getReport1: async function (url) {
@@ -129,7 +145,7 @@ var reports = {
 
         console.log(res.data);
     },
-    
+
 
 };
 export default reports;

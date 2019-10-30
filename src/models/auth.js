@@ -38,14 +38,22 @@ var auth = {
     //
     // },
 
-    registrer: async function(email, password) {
+    registrer: async function(name, email, year, month, day, password) {
         // console.log(this.state.fullName.value);
-        console.log(email);
+        console.log(name);
         console.log(password);
+        console.log(email);
+        console.log(year);
+        console.log(month);
+        console.log(day);
+        
         var payload = {
+            name: name,
             email: email,
-            password: password,
-            api_key: "e2386b9513c75723e61b80bd23d427d1"
+            year: year,
+            month: month,
+            day: day,
+            password: password
         };
 
         let res = await axios.post('http://localhost:1337/register', payload);

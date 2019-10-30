@@ -1,8 +1,9 @@
 // import React, { Component } from 'react';
 
 import React from 'react';
-import {Redirect} from 'react-router-dom';
+import { Link, Redirect } from "react-router-dom";
 import auth from "./models/auth.js";
+
 
 class Loginreg extends React.Component {
     render() {
@@ -39,6 +40,7 @@ class Register extends React.Component {
             dayChoice: null,
             showPassword: null,
             formValidation: null,
+            inLogged: null,
             isGoing: false,
             isOk: false,
             errors: {
@@ -113,16 +115,19 @@ handleChange = (event) => {
   this.setState({errors, [name]: value});
 }
 
-
 handleSubmit = (event) => {
   event.preventDefault();
   if(validateForm(this.state.errors) && this.state.fullName !== null) {
       this.setState({formValidation: 'Giltigt registreringsformulär!'});
-      // console.log(this.state.fullName);
-      // console.log(this.state.email);
+      this.setState({inLogged: "inloggad"});
+
+      console.log(this.state.yearChoice);
+      console.log(this.state.monthChoice);
+      console.log(this.state.dayChoice);
       // console.log(this.state.password);
-      auth.registrer(this.state.email, this.state.password);
-      return  <Redirect  to="/reports" />
+      // auth.registrer(this.state.email, this.state.password);
+      auth.registrer(this.state.fullName, this.state.email, this.state.yearChoice, this.state.monthChoice, this.state.dayChoice, this.state.password);
+      // return <Redirect to="/reports" />;
   }else{
      this.setState({formValidation: 'Ogiltigt registreringsformulär!'});
   }
@@ -130,6 +135,10 @@ handleSubmit = (event) => {
 }
 
 render() {
+  if (this.state.inLogged) {
+    return <Redirect to="/Login" />;
+  }
+  console.log(this.state.inLogged);
   const {errors} = this.state;
   const months = [
     {idMonth: '01', month: 'Jan', monthDays: 31},
@@ -167,6 +176,7 @@ const listYears = years.map((year, index) =>
 
 
   return (
+    
     <div className='wrapper'>
       <div className='form-wrapper'>
         <h2>Registrering</h2>
@@ -175,7 +185,7 @@ const listYears = years.map((year, index) =>
         <form onSubmit={this.handleSubmit} noValidate>
 
           <div className='fullName'>
-            <label htmlFor="fullName">För- och efternamn {errors.fullName.length > 0 &&
+            <label htmlFor="fullName">Användarnamn {errors.fullName.length > 0 &&
               <span className='error'>{errors.fullName}</span>}
             {this.state.fullName !== null && this.state.fullName.length > 4 ?
                 <span className='valid'>&#10004;</span> :
@@ -260,7 +270,7 @@ const listYears = years.map((year, index) =>
 
                 </div>
 
-              <div>
+              <div className='submit'>
                 <span className='info'>Jag godkänner hur applikationen skyddar mina uppgifter</span>
                 <input
                 name="isOk"
@@ -277,6 +287,7 @@ const listYears = years.map((year, index) =>
                         <button disabled>Registrera</button>
                       </div>
                 }
+                <Link to="/Login" style={{color: 'blue', margin: 'auto'}}>Inloggning</Link>
                   </div>
 
 

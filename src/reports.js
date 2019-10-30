@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Route,
-  Link,
+  NavLink,
+  Link
 } from 'react-router-dom'
 import ReportAdd from './reportAdd.js';
+import ReportRev from './reportRev.js';
 import reports from './models/reports.js';
-import {Redirect} from 'react-router-dom';
-const axios = require('axios');
+// import {Redirect} from 'react-router-dom';
+// const axios = require('axios');
 
 
 // function getRep(){
@@ -26,24 +28,24 @@ const axios = require('axios');
 //  console.log(reports.currentReports);
 
 //  getRep();
- function Welcome(props) {
-  return <h1>Hello, {props.name} </h1>;
-}
-let match = 0;
-function ActionLink(props) {
-  function handleClick(e) {
-    e.preventDefault();
-    console.log('The link was clicked.');
-    return  <Redirect  to="/" />
-    
-  }
+//  function Welcome(props) {
+//   return <h1>Hello, {props.name} </h1>;
+// }
+// let match = 0;
+// function ActionLink(props) {
+//   function handleClick(e) {
+//     e.preventDefault();
+//     console.log('The link was clicked.');
+//     return  <Redirect  to="/" />
 
-  return (
-    <a href="reports/"onClick={handleClick}>
-      Click me
-    </a>
-  );
-}
+//   }
+
+//   return (
+//     <a href="reports/"onClick={handleClick}>
+//       Click me
+//     </a>
+//   );
+// }
 
 // reports.getUsers();
 // console.log(reports.allReports);
@@ -52,7 +54,7 @@ function ActionLink(props) {
 //     name: 'Vecka 1',
 //     id: 1,
 //     description: <h3>Redovisningstexten för kmom01</h3>,
-//     texten: 
+//     texten:
 //     <div>
 //     <h4>Install modules</h4>
 //     <p>In order to be able to install modules in react, you must first initialize npm in
@@ -118,15 +120,17 @@ function Topic ({ match }) {
   reports.getReport();
   // console.log(reports.currentReports)
   const topic = reports.currentReports.find(({ id }) => id.toString() === match.params.topicId)
-  console.log(match.params.topicId)
+  // console.log(match.params.topicId)
 
   return (
     <div className = "articel">
-      <ActionLink/>
-      <Welcome name = {match.params.topicId} />;
+      {/* <ActionLink/>
+      <Welcome name = {match.params.topicId} />; */}
+      <p>Vecka: {topic.name}</p>
+      <Link to={`/reports/rev/${match.params.topicId}`}>&#128393; Redigera</Link>
       <h3>{topic.description}</h3>
       <p>{topic.texten}</p>
-      <p>{topic.id}</p>
+      {/* <p>{topic.id}</p> */}
       <a href="https://github.com/persla/jsramverk">Repo on github</a>
     </div>
   )
@@ -139,36 +143,38 @@ function Topics ({ match }) {
   return (
     <div>
       <h2>Veckorapporter</h2>
+      <nav>
       <ul>
         {reports.currentReports.map(({ name, id }) => (
           <li key={id}>
-            <Link to={`${match.url}/${id}`}>{name}</Link>
+            <NavLink to={`${match.url}/${id}`} activeClassName="active">v.{name}</NavLink>
           </li>
         ))}
       </ul>
-
+      </nav>
       <Route path={`${match.path}/:topicId`} component={Topic}/>
     </div>
   )
 }
 
 class Reports extends Component {
-  
+
   render() {
-    
     return (
-      
       <Router>
+      <nav>
           <ul>
-          <li><Link
-            to='/reports/week'>Veckor</Link></li>
-       
-            <li><Link
-            to='/reports/add'>Ny rapport</Link></li>
+          <li><NavLink
+          to="/reports/week" activeClassName="active">Veckor</NavLink></li>
+          <li><NavLink
+           to="/reports/add" activeClassName="active">Ny rapport</NavLink></li>
           </ul>
+          </nav>
           <Route path='/reports/week' component={Topics} />
           <Route path='/reports/add' component={ReportAdd} />
+          <Route path='/reports/rev/:id' component={ReportRev} />
       </Router>
+
     )
   }
 }

@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import reports from "./models/reports.js";
-import auth from "./models/auth.js";
+import {Redirect } from "react-router-dom";
+// import Login from './Login.js';
 
 class ReportAdd extends React.Component {
     render() {
         return (
-            <Register />
+            <Addsreports />
         );
     }
 }
 
-class Register extends React.Component {
+class Addsreports extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             week: '',
             description: '',
             texten: '',
+            reportSended: null,
         };
         this.handleChange = this.handleChange.bind(this);
     }
- 
+
 handleChange = (event) => {
   event.preventDefault();
   const { name, value } = event.target;
@@ -30,21 +32,31 @@ handleChange = (event) => {
 
 handleSubmit = (event) => {
   event.preventDefault();
-  console.log(this.state.week)
-  console.log(this.state.description)
-    console.log(this.state.texten)
+  // console.log(this.state.week)
+  // console.log(this.state.description)
+  //   console.log(this.state.texten)
       reports.addReport(this.state.week, this.state.description, this.state.texten);
+      this.setState({reportSended: "sended"});
     //   return  <Redirect  to="/reports" />
     // auth.login();
     // console.log(auth.token);
 }
 
+
 render() {
- 
+  // console.log(<Login/>)
+  // console.log(reports.res.data.message);
+  if (this.state.reportSended) {
+    return <Redirect to="/reports/week" />;
+  }
+
+
+
   return (
+
     <div>
- 
- 
+
+
         <h3>Rapport</h3>
         <form onSubmit={this.handleSubmit} >
 
@@ -54,9 +66,9 @@ render() {
                  <span className='inforeport'>  - Obligatorisk fält </span>  :
               <span className='valid'>&#10004;</span>} </p>
             <input type='number' name='week' onChange={this.handleChange} required/>
-           
+
               </div>
-   
+
               <div className='email'>
               <p>Rubrik
             {this.state.description.length === 0 ?
