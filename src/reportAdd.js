@@ -1,6 +1,7 @@
 import React from 'react';
 import reports from "./models/reports.js";
 import {Redirect } from "react-router-dom";
+import auth from "./models/auth.js";
 // import Login from './Login.js';
 
 class ReportAdd extends React.Component {
@@ -32,14 +33,16 @@ class Addsreports extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        reports.addReport(this.state.week, this.state.description, this.state.texten);
+        reports.addReport(auth.htmlEntities(this.state.week),
+            auth.htmlEntities(this.state.description),
+            auth.htmlEntities(this.state.texten));
         this.setState({reportSended: "sended"});
     }
 
 
     render() {
         if (this.state.reportSended) {
-            return <Redirect to="/reports/week" />;
+            return <Redirect to="/reports" />;
         }
 
         return (

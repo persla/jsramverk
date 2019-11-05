@@ -120,14 +120,13 @@ handleSubmit = (event) => {
   if(validateForm(this.state.errors) && this.state.fullName !== null) {
       this.setState({formValidation: 'Giltigt registreringsformulär!'});
       this.setState({inLogged: "inloggad"});
-
-      // console.log(this.state.yearChoice);
-      // console.log(this.state.monthChoice);
-      // console.log(this.state.dayChoice);
-      // console.log(this.state.password);
-      // auth.registrer(this.state.email, this.state.password);
-      auth.registrer(this.state.fullName, this.state.email, this.state.yearChoice, this.state.monthChoice, this.state.dayChoice, this.state.password);
-      // return <Redirect to="/reports" />;
+      auth.registrer(auth.htmlEntities(this.state.fullName),
+          auth.htmlEntities(this.state.email),
+          auth.htmlEntities(this.state.yearChoice),
+          auth.htmlEntities(this.state.monthChoice),
+          auth.htmlEntities(this.state.dayChoice),
+          auth.htmlEntities(this.state.password),
+          );
   }else{
      this.setState({formValidation: 'Ogiltigt registreringsformulär!'});
   }

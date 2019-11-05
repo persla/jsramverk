@@ -1,6 +1,7 @@
 import React from 'react';
 import reports from "./models/reports.js";
 import { Redirect } from "react-router-dom";
+import auth from "./models/auth.js";
 
 class ReportRev  extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class ReportRev  extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
         const topic = reports.currentReports.find(({ id }) => id.toString() === this.state.id)
-        console.log(topic.name)
+        // console.log(topic.name)
         this.defaultWeek = topic.name;
         this.defaultDescription = topic.description;
         this.defaultTexten = topic.texten;
@@ -32,9 +33,9 @@ class ReportRev  extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        reports.revReport(this.state.week ? this.state.week : this.defaultWeek,
-            this.state.description ? this.state.description : this.defaultDescription,
-            this.state.texten ? this.state.texten : this.defaultTexten, this.state.id );
+        reports.revReport(this.state.week ? auth.htmlEntities(this.state.week) : this.defaultWeek,
+            this.state.description ? auth.htmlEntities(this.state.description) : this.defaultDescription,
+            this.state.texten ? auth.htmlEntities(this.state.texten) : this.defaultTexten, this.state.id );
             this.setState({reportSended: "sended"});
         }
 
