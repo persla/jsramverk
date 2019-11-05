@@ -121,9 +121,9 @@ handleSubmit = (event) => {
       this.setState({formValidation: 'Giltigt registreringsformulär!'});
       this.setState({inLogged: "inloggad"});
 
-      console.log(this.state.yearChoice);
-      console.log(this.state.monthChoice);
-      console.log(this.state.dayChoice);
+      // console.log(this.state.yearChoice);
+      // console.log(this.state.monthChoice);
+      // console.log(this.state.dayChoice);
       // console.log(this.state.password);
       // auth.registrer(this.state.email, this.state.password);
       auth.registrer(this.state.fullName, this.state.email, this.state.yearChoice, this.state.monthChoice, this.state.dayChoice, this.state.password);
@@ -138,7 +138,7 @@ render() {
   if (this.state.inLogged) {
     return <Redirect to="/Login" />;
   }
-  console.log(this.state.inLogged);
+  // console.log(this.state.inLogged);
   const {errors} = this.state;
   const months = [
     {idMonth: '01', month: 'Jan', monthDays: 31},
@@ -176,7 +176,7 @@ const listYears = years.map((year, index) =>
 
 
   return (
-    
+
     <div className='wrapper'>
       <div className='form-wrapper'>
         <h2>Registrering</h2>

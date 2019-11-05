@@ -4,7 +4,7 @@ const Me = () => {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:1337/me')
+    fetch('https://me-api.teachmeapp.me/me')
       .then(res => res.json())
       .then(res => setMessage(res.description));
   });
