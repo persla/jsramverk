@@ -7,6 +7,6 @@ build:
             background: true
         override:
           - command: npm test
-        coverage:
-          file: coverage/clover.xml
-          format: clover
+            coverage:
+              file: coverage/clover.xml
+              format: clover
