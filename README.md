@@ -21,3 +21,6 @@ You will also see any lint errors in the console.
 
 ## Badges
 [![Build Status](https://travis-ci.com/persla/jsramverk.svg?branch=master)](https://travis-ci.com/persla/jsramverk)
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/persla/jsramverk/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/persla/jsramverk/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/persla/jsramverk/badges/build.png?b=master)](https://scrutinizer-ci.com/g/persla/jsramverk/build-status/master)
