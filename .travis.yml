@@ -28,7 +28,7 @@ before_script:
 
 
 script:
-    - npm start
+    - npm start &
     - npm test
 
 after_success:
