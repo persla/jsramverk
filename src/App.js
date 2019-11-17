@@ -6,6 +6,7 @@ import ReportRev from './reportRev.js';
 import Loginreg from './Register.js';
 import Login from './Login.js';
 import Admin from './logout.js';
+import Chat from './Chat.js';
 // import PrivateRoute from './PrivateRoute';
 import  {AuthContext}  from "./context/auth";
 import React, { useState } from "react"
@@ -43,6 +44,7 @@ function App(props) {
               <li><NavLink to="/Register" activeClassName="active">Registrering</NavLink></li>
               <li><NavLink to="/Login" activeClassName="active">Inloggning</NavLink></li>
               <li><NavLink to="/logout" activeClassName="active">Utloggning</NavLink></li>
+              <li><NavLink to="/Chat" activeClassName="active">Chat</NavLink></li>
             </ul>
           </nav>
           <Route exact path="/" component={Me} />
@@ -53,6 +55,7 @@ function App(props) {
           <Route path="/reportRev/:id" component={ReportRev} />
           <Route path="/Login" component={Login} />
           <Route path="/logout" component={Admin} />
+          <Route path="/Chat" component={Chat} />
           <footer>Lars Persson 2019</footer>
         </div>
       </Router>
